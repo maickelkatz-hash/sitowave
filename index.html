@@ -7,63 +7,69 @@
 <title>Sitowave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --canvas: #f3f4ee;
-    --canvas-raised: #fbfbf8;
-    --ink: #15181f;
-    --ink-soft: #363c47;
-    --brand: #2c4bd4;
-    --brand-ink: #1c34a3;
-    --flame: #dd6a17;
-    --flame-ink: #b6540f;
-    --mist: #878d97;
-    --line: rgba(21, 24, 31, 0.12);
-    --line-strong: rgba(21, 24, 31, 0.22);
-    --on-ink: #f3f4ee;
-    --on-ink-soft: #b7bac2;
-    --shadow: 0 1px 2px rgba(21,24,31,0.06);
+    --paper: #eef0e8;
+    --paper-raised: #e3e6db;
+    --ink: #14171a;
+    --ink-soft: #454b50;
+    --ink-faint: #5c6267;
+    --accent: #ff4713;
+    --accent-ink: #c93500;
+    --accent-soft: rgba(255, 71, 19, 0.12);
+    --panel: #182430;
+    --panel-raised: #21313f;
+    --on-panel: #edefea;
+    --on-panel-soft: #9fb0be;
+    --line: rgba(20, 23, 26, 0.14);
+    --line-strong: rgba(20, 23, 26, 0.26);
+    --shadow: 0 1px 2px rgba(20, 23, 26, 0.08);
+    --grid-line: rgba(20, 23, 26, 0.05);
 
-    --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
-    --font-body: 'Work Sans', 'Segoe UI', system-ui, sans-serif;
-    --font-mono: 'Space Mono', 'SFMono-Regular', Consolas, monospace;
+    --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --canvas: #14161c;
-      --canvas-raised: #1b1e26;
-      --ink: #f0f1ec;
-      --ink-soft: #c7cad3;
-      --brand: #6c86f5;
-      --brand-ink: #97a8f8;
-      --flame: #f2934c;
-      --flame-ink: #f7ad74;
-      --mist: #8c93a1;
-      --line: rgba(240, 241, 236, 0.14);
-      --line-strong: rgba(240, 241, 236, 0.26);
-      --on-ink: #14161c;
-      --on-ink-soft: #14161c;
-      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      --paper: #12151a;
+      --paper-raised: #1a1e24;
+      --ink: #edefea;
+      --ink-soft: #c3c8cb;
+      --ink-faint: #82898d;
+      --accent: #ff5c33;
+      --accent-ink: #ff8058;
+      --accent-soft: rgba(255, 92, 51, 0.16);
+      --panel: #0d1620;
+      --panel-raised: #142330;
+      --on-panel: #edefea;
+      --on-panel-soft: #91a3b1;
+      --line: rgba(237, 239, 234, 0.14);
+      --line-strong: rgba(237, 239, 234, 0.26);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      --grid-line: rgba(237, 239, 234, 0.045);
     }
   }
   :root[data-theme="dark"] {
-    --canvas: #14161c;
-    --canvas-raised: #1b1e26;
-    --ink: #f0f1ec;
-    --ink-soft: #c7cad3;
-    --brand: #6c86f5;
-    --brand-ink: #97a8f8;
-    --flame: #f2934c;
-    --flame-ink: #f7ad74;
-    --mist: #8c93a1;
-    --line: rgba(240, 241, 236, 0.14);
-    --line-strong: rgba(240, 241, 236, 0.26);
-    --on-ink: #14161c;
-    --on-ink-soft: #14161c;
-    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    --paper: #12151a;
+    --paper-raised: #1a1e24;
+    --ink: #edefea;
+    --ink-soft: #c3c8cb;
+    --ink-faint: #82898d;
+    --accent: #ff5c33;
+    --accent-ink: #ff8058;
+    --accent-soft: rgba(255, 92, 51, 0.16);
+    --panel: #0d1620;
+    --panel-raised: #142330;
+    --on-panel: #edefea;
+    --on-panel-soft: #91a3b1;
+    --line: rgba(237, 239, 234, 0.14);
+    --line-strong: rgba(237, 239, 234, 0.26);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --grid-line: rgba(237, 239, 234, 0.045);
   }
 
   * { box-sizing: border-box; }
@@ -75,7 +81,7 @@
 
   body {
     margin: 0;
-    background: var(--canvas);
+    background: var(--paper);
     color: var(--ink);
     font-family: var(--font-body);
     font-size: 16px;
@@ -86,51 +92,53 @@
   img, svg { max-width: 100%; }
 
   .wrap {
-    max-width: 1120px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 28px;
+    padding: 0 32px;
   }
 
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
-  em { font-style: italic; color: var(--flame-ink); }
-
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
   a { color: inherit; }
+
+  .mono { font-family: var(--font-mono); }
 
   .eyebrow {
     font-family: var(--font-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
+    font-size: 12px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--brand);
+    color: var(--ink-faint);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .eyebrow::before {
-    content: "";
-    width: 16px;
-    height: 1px;
-    background: var(--brand);
-  }
+  .eyebrow .tick { color: var(--accent); font-weight: 700; }
+  section.on-panel .eyebrow { color: var(--on-panel-soft); }
+  section.on-panel .eyebrow .tick { color: var(--accent-ink); }
 
-  /* ---------- draft ribbon ---------- */
-  .draft-ribbon {
-    background: var(--ink);
-    color: var(--on-ink-soft);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-align: center;
-    padding: 8px 16px;
+  /* ---------- reveal on scroll (progressive: only active once JS adds .reveal) ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+
+  /* ---------- ticket corner marks ---------- */
+  .ticket { position: relative; }
+  .ticket::before, .ticket::after {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    pointer-events: none;
   }
-  .draft-ribbon strong { color: var(--on-ink); font-weight: 700; }
+  .ticket::before { top: -1px; left: -1px; border-top: 1.5px solid var(--ink-faint); border-left: 1.5px solid var(--ink-faint); }
+  .ticket::after { bottom: -1px; right: -1px; border-bottom: 1.5px solid var(--ink-faint); border-right: 1.5px solid var(--ink-faint); }
+  .ticket.on-panel-marks::before, .ticket.on-panel-marks::after { border-color: var(--on-panel-soft); }
 
   /* ---------- nav ---------- */
   header.nav {
     position: sticky;
     top: 0;
     z-index: 40;
-    background: color-mix(in srgb, var(--canvas) 88%, transparent);
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
@@ -138,23 +146,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 18px 0;
+    gap: 24px;
   }
   .logo {
     font-family: var(--font-display);
-    font-weight: 680;
-    font-size: 21px;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    font-size: 25px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
     display: flex;
-    align-items: baseline;
-    gap: 2px;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
   }
-  .logo .dot { color: var(--flame); }
-  nav.links { display: flex; gap: 32px; }
+  .logo .bit { color: var(--accent); }
+  .prelaunch-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    padding: 3px 7px;
+  }
+  nav.links { display: flex; gap: 30px; margin-left: auto; }
   nav.links a {
     text-decoration: none;
-    font-size: 14.5px;
+    font-size: 13.5px;
     font-weight: 500;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
     color: var(--ink-soft);
     position: relative;
     padding: 4px 0;
@@ -164,7 +187,7 @@
     position: absolute;
     left: 0; right: 0; bottom: -2px;
     height: 1.5px;
-    background: var(--flame);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.25s ease;
@@ -176,122 +199,129 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-body);
+    font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 14.5px;
-    padding: 11px 20px;
-    border-radius: 3px;
-    border: 1px solid transparent;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 2px;
+    border: 1.5px solid transparent;
     cursor: pointer;
     text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
   }
   .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--flame); color: #fff8f0; }
-  .btn-primary:hover { background: var(--flame-ink); box-shadow: var(--shadow); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-primary { background: var(--accent); color: #fff8f5; }
+  .btn-primary:hover { background: var(--accent-ink); box-shadow: var(--shadow); }
   .btn-ghost { background: transparent; border-color: var(--line-strong); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--ink); }
-  .btn-small { padding: 8px 14px; font-size: 13px; }
-  @media (max-width: 720px) { nav.links { display: none; } }
+  .btn-small { padding: 9px 14px; font-size: 12px; }
+  @media (max-width: 760px) { nav.links { display: none; } }
 
   /* ---------- hero ---------- */
   .hero {
-    padding: 88px 0 96px;
+    padding: 76px 0 88px;
     position: relative;
     overflow: hidden;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 60px;
     align-items: center;
   }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 
   .hero h1 {
-    font-size: clamp(38px, 5.2vw, 60px);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-    margin-top: 18px;
+    font-size: clamp(42px, 5.6vw, 68px);
+    line-height: 0.98;
+    text-transform: uppercase;
+    margin-top: 20px;
   }
+  .hero h1 em { font-style: normal; color: var(--accent); }
   .hero p.lede {
-    font-size: 18px;
+    font-size: 17.5px;
     color: var(--ink-soft);
     max-width: 46ch;
     margin-top: 22px;
   }
   .hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 
-  .hero-visual {
-    position: relative;
-    aspect-ratio: 1 / 1;
+  /* ---------- console (hero visual) ---------- */
+  .console {
+    background: var(--panel);
+    color: var(--on-panel);
+    border-radius: 3px;
+    border: 1px solid rgba(237,239,234,0.1);
+    box-shadow: 0 20px 50px rgba(15, 20, 15, 0.18);
+    overflow: hidden;
+  }
+  .console-head {
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  .stamp {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    border: 1.5px dashed var(--line-strong);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: spin 42s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .stamp-inner {
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--on-ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    letter-spacing: 0.05em;
-    line-height: 1.5;
-    animation: counterspin 42s linear infinite;
-    box-shadow: var(--shadow);
-  }
-  @keyframes counterspin { to { transform: rotate(-360deg); } }
-  .stamp-inner b { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 6px; color: var(--flame); font-style: italic;}
-
-  .hero-cards {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .float-card {
-    position: absolute;
-    background: var(--canvas-raised);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 10px 13px;
+    gap: 10px;
+    padding: 13px 18px;
+    border-bottom: 1px solid rgba(237,239,234,0.12);
     font-family: var(--font-mono);
     font-size: 11.5px;
-    color: var(--ink-soft);
-    box-shadow: var(--shadow);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-panel-soft);
   }
-  .float-card.a { top: 6%; left: -4%; }
-  .float-card.b { bottom: 10%; right: -6%; }
-  @media (max-width: 860px) { .float-card { display: none; } }
+  .console-head .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .console-head .ticket-num { color: var(--on-panel); font-weight: 600; }
+  .console-head .console-time { margin-left: auto; color: var(--on-panel-soft); }
+  .console-body { padding: 22px 18px 26px; display: flex; flex-direction: column; gap: 13px; }
+  .console-line {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    display: flex;
+    align-items: baseline;
+    gap: 11px;
+    color: var(--on-panel-soft);
+  }
+  .console-line .chk { width: 14px; flex-shrink: 0; color: var(--on-panel-soft); }
+  .console-line.done { color: var(--on-panel); }
+  .console-line.done .chk { color: var(--accent-ink); }
+  .console-line.active { color: var(--on-panel); }
+  .console-line.active .chk { color: var(--accent-ink); }
+  .console-line.pending { color: var(--on-panel-soft); opacity: 0.6; }
+  .cursor { display: inline-block; margin-left: 2px; color: var(--accent-ink); }
+  @media (prefers-reduced-motion: no-preference) {
+    .cursor { animation: blink 1s steps(1) infinite; }
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .console-foot {
+    border-top: 1px solid rgba(237,239,234,0.12);
+    padding: 12px 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--on-panel-soft);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.03em;
+  }
+
+  .hero-stats { display: flex; gap: 28px; margin-top: 28px; flex-wrap: wrap; }
+  .hero-stat { font-family: var(--font-mono); }
+  .hero-stat b { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 800; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .hero-stat span { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
 
   /* ---------- sections ---------- */
-  section { padding: 92px 0; }
-  section.on-ink { background: var(--ink); color: var(--on-ink); }
-  section.on-ink .eyebrow { color: var(--flame-ink); }
-  section.on-ink .eyebrow::before { background: var(--flame-ink); }
-  section.raised { background: var(--canvas-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  section { padding: 100px 0; }
+  section.on-panel { background: var(--panel); color: var(--on-panel); }
+  section.raised { background: var(--paper-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-  .section-head { max-width: 640px; margin-bottom: 56px; }
-  .section-head h2 { font-size: clamp(28px, 3.4vw, 38px); margin-top: 14px; letter-spacing: -0.01em; }
-  .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 16.5px; }
-  section.on-ink .section-head p { color: var(--on-ink-soft); }
+  .section-head { max-width: 640px; margin-bottom: 60px; }
+  .section-head h2 { font-size: clamp(30px, 3.6vw, 42px); margin-top: 16px; text-transform: uppercase; }
+  .section-head p { color: var(--ink-soft); margin-top: 16px; font-size: 16.5px; }
+  section.on-panel .section-head p { color: var(--on-panel-soft); }
 
   /* ---------- process ---------- */
   .process {
@@ -300,142 +330,153 @@
     gap: 0;
     border-top: 1px solid var(--line);
   }
-  @media (max-width: 860px) { .process { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .process { grid-template-columns: 1fr; } }
   .step {
-    padding: 28px 26px 32px 0;
+    padding: 30px 26px 32px 0;
     border-right: 1px solid var(--line);
     position: relative;
   }
   .process > .step:last-child { border-right: none; }
-  @media (max-width: 860px) {
-    .step { border-right: none; border-bottom: 1px solid var(--line); padding: 26px 0; }
+  @media (max-width: 900px) {
+    .step { border-right: none; border-bottom: 1px solid var(--line); padding: 28px 0; }
   }
   .step .num {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--flame);
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--line-strong);
     display: block;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    -webkit-text-stroke: 1.5px var(--ink-faint);
+    color: transparent;
   }
-  .step h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .step h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; font-family: var(--font-display); letter-spacing: 0.01em; }
   .step p { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
 
   /* ---------- pricing ---------- */
   .market-toggle {
     display: inline-flex;
-    border: 1px solid var(--line-strong);
-    border-radius: 4px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 2px;
     overflow: hidden;
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
   .market-toggle button {
     font-family: var(--font-mono);
     font-size: 12.5px;
-    letter-spacing: 0.04em;
-    padding: 9px 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 10px 18px;
     background: transparent;
     border: none;
     color: var(--ink-soft);
     cursor: pointer;
   }
-  .market-toggle button + button { border-left: 1px solid var(--line-strong); }
-  .market-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+  .market-toggle button + button { border-left: 1.5px solid var(--line-strong); }
+  .market-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 22px;
   }
-  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 940px) { .pricing-grid { grid-template-columns: 1fr; } }
 
   .price-card {
-    background: var(--canvas-raised);
+    background: var(--paper);
     border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 30px 26px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(21,24,31,0.08); border-color: var(--line-strong); }
-  .price-card.featured { border-color: var(--flame); border-width: 1.5px; }
-  .badge-featured {
-    position: absolute;
-    top: -12px;
-    left: 26px;
-    background: var(--flame);
-    color: #fff8f0;
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20,23,26,0.08); }
+  .price-card.featured { border-color: var(--accent); }
+  .price-card-inner { padding: 26px 22px; display: flex; flex-direction: column; flex-grow: 1; }
+  .price-card-tag {
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: 3px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
   }
-  .price-card h3 { font-size: 20px; font-weight: 600; }
+  .price-card.featured .price-card-tag { color: var(--accent-ink); }
+  .price-card h3 { font-size: 22px; font-weight: 800; text-transform: uppercase; }
   .price-tag {
     font-family: var(--font-mono);
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
-    margin: 18px 0 4px;
+    margin: 16px 0 2px;
     font-variant-numeric: tabular-nums;
   }
-  .price-tag span { font-size: 14px; font-weight: 400; color: var(--mist); }
-  .price-sub { font-family: var(--font-mono); font-size: 13px; color: var(--mist); margin-bottom: 22px; }
+  .price-tag span { font-size: 14px; font-weight: 400; color: var(--ink-faint); }
+  .price-sub { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-faint); margin-bottom: 24px; }
   .price-card ul { list-style: none; padding: 0; margin: 0 0 28px; flex-grow: 1; }
   .price-card li {
     font-size: 14.5px;
     color: var(--ink-soft);
-    padding: 9px 0;
+    padding: 10px 0;
     border-top: 1px solid var(--line);
     display: flex;
     gap: 10px;
   }
   .price-card li:first-child { border-top: none; }
-  .price-card li::before { content: "—"; color: var(--flame); flex-shrink: 0; }
+  .price-card li::before { content: "—"; font-family: var(--font-mono); color: var(--accent); flex-shrink: 0; }
 
-  /* ---------- proof ---------- */
+  /* ---------- proof / status board ---------- */
   .proof-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 56px;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 60px;
     align-items: start;
   }
-  @media (max-width: 860px) { .proof-grid { grid-template-columns: 1fr; } }
-  .proof-copy p { color: var(--ink-soft); font-size: 16.5px; margin-top: 18px; max-width: 52ch; }
-  .proof-sites { display: flex; flex-direction: column; gap: 14px; }
-  .proof-site {
+  @media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr; } }
+  .proof-copy p { color: var(--ink-soft); font-size: 16.5px; margin-top: 18px; max-width: 50ch; }
+  .status-board { display: flex; flex-direction: column; gap: 12px; }
+  .status-row {
     border: 1px solid var(--line);
-    border-radius: 5px;
     padding: 18px 20px;
-    background: var(--canvas-raised);
+    background: var(--paper);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
   }
-  .proof-site .name { font-family: var(--font-display); font-weight: 600; font-size: 17px; }
-  .proof-site .tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--mist); letter-spacing: 0.03em; }
-  .proof-placeholder {
-    border: 1px dashed var(--line-strong);
-    border-radius: 5px;
-    padding: 18px 20px;
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    color: var(--mist);
-    text-align: center;
+  .status-row .name { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; }
+  .status-row .tag { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.03em; text-transform: uppercase; }
+  .status-live { display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); flex-shrink: 0; }
+  .status-live .pulse { width: 7px; height: 7px; border-radius: 50%; background: #2e9e55; position: relative; flex-shrink: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    .status-live .pulse::after {
+      content: "";
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      border: 1px solid #2e9e55;
+      animation: pulse 2.2s ease-out infinite;
+    }
   }
+  @keyframes pulse { 0% { opacity: 0.7; transform: scale(0.6); } 100% { opacity: 0; transform: scale(1.8); } }
+  .status-row.pending { border-style: dashed; border-color: var(--line-strong); }
+  .status-row.pending .name { color: var(--ink-faint); }
+  .status-row.pending .status-live { color: var(--ink-faint); }
+  .status-row.pending .status-live .pulse { background: var(--ink-faint); }
+  .status-row.pending .status-live .pulse::after { display: none; }
 
   /* ---------- contact ---------- */
   .contact-grid {
     display: grid;
     grid-template-columns: 0.85fr 1.15fr;
-    gap: 64px;
+    gap: 68px;
   }
-  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
-  .contact-copy h2 { font-size: clamp(28px, 3.4vw, 40px); }
-  .contact-copy p { color: var(--on-ink-soft); margin-top: 16px; max-width: 42ch; }
-  .contact-meta { margin-top: 34px; font-family: var(--font-mono); font-size: 13px; color: var(--on-ink-soft); line-height: 2; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-copy h2 { font-size: clamp(30px, 3.6vw, 44px); text-transform: uppercase; }
+  .contact-copy p { color: var(--on-panel-soft); margin-top: 16px; max-width: 42ch; }
+  .contact-meta { margin-top: 36px; font-family: var(--font-mono); font-size: 12.5px; color: var(--on-panel-soft); line-height: 2.1; }
+  .contact-meta .k { color: var(--on-panel); letter-spacing: 0.05em; }
+  .contact-meta .pending { color: var(--on-panel-soft); font-style: italic; }
 
   form.brief {
     display: grid;
@@ -448,76 +489,69 @@
   .field label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 11.5px;
-    letter-spacing: 0.05em;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--on-ink-soft);
+    color: var(--on-panel-soft);
     margin-bottom: 8px;
   }
   .field input, .field select, .field textarea {
     width: 100%;
-    background: color-mix(in srgb, var(--on-ink) 6%, transparent);
-    border: 1px solid rgba(240,241,236,0.22);
-    color: var(--on-ink);
-    border-radius: 3px;
+    background: rgba(237,239,234,0.05);
+    border: 1px solid rgba(237,239,234,0.22);
+    color: var(--on-panel);
+    border-radius: 2px;
     padding: 11px 12px;
     font-family: var(--font-body);
     font-size: 14.5px;
   }
-  :root[data-theme="dark"] .field input,
-  :root[data-theme="dark"] .field select,
-  :root[data-theme="dark"] .field textarea { background: color-mix(in srgb, var(--ink) 40%, transparent); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .field input,
-    :root:not([data-theme="light"]) .field select,
-    :root:not([data-theme="light"]) .field textarea { background: color-mix(in srgb, var(--ink) 40%, transparent); }
-  }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(240,241,236,0.4); }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(237,239,234,0.35); }
   .field input:focus, .field select:focus, .field textarea:focus {
-    outline: 2px solid var(--flame);
+    outline: 2px solid var(--accent);
     outline-offset: 1px;
   }
   .field textarea { resize: vertical; min-height: 90px; }
 
   form.brief .submit-row { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
-  .form-note { font-family: var(--font-mono); font-size: 11.5px; color: var(--on-ink-soft); margin-top: 14px; }
+  .form-note { font-family: var(--font-mono); font-size: 11px; color: var(--on-panel-soft); margin-top: 14px; }
 
   .success-panel {
-    border: 1px solid rgba(240,241,236,0.25);
-    border-radius: 5px;
-    padding: 28px;
+    border: 1px solid rgba(237,239,234,0.25);
+    padding: 30px;
     font-family: var(--font-mono);
     font-size: 14px;
     display: none;
   }
   .success-panel.show { display: block; }
-  .success-panel b { display: block; font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--flame-ink); margin-bottom: 8px; }
+  .success-panel b { display: block; font-family: var(--font-display); font-size: 22px; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 10px; }
 
   /* ---------- footer ---------- */
   footer {
-    padding: 28px 0;
-    border-top: 1px solid rgba(240,241,236,0.14);
+    padding: 26px 0;
+    background: var(--panel);
+    border-top: 1px solid rgba(237,239,234,0.1);
+  }
+  footer .wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
     font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--on-ink-soft);
+    font-size: 11.5px;
+    color: var(--on-panel-soft);
+    letter-spacing: 0.03em;
   }
+  footer .wrap strong { color: var(--on-panel); }
 
-  ::selection { background: var(--flame); color: #fff8f0; }
+  ::selection { background: var(--accent); color: #fff8f5; }
 </style>
 </head>
 <body>
-<div class="draft-ribbon">
-  <strong>RASCUNHO</strong> — protótipo interno da agência, ainda não publicado · formulário abaixo é uma pré-visualização (não envia dados reais)
-</div>
-
 <header class="nav">
   <div class="wrap nav-row">
-    <div class="logo">Sitowave<span class="dot">.</span></div>
+    <div class="logo">SITO<span class="bit">WAVE</span></div>
+    <span class="prelaunch-tag">Pré-lançamento</span>
     <nav class="links">
       <a href="#como-funciona">Como funciona</a>
       <a href="#pacotes">Pacotes</a>
@@ -531,24 +565,35 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Agência de sites · Portugal &amp; Brasil</span>
-      <h1>Site profissional pronto em poucos dias, não em meses.</h1>
+      <span class="eyebrow"><span class="tick">—</span> Agência de sites · Portugal · Espanha · Brasil</span>
+      <h1>Site profissional pronto <em>em dias</em>, não em meses.</h1>
       <p class="lede">Criamos sites institucionais para pequenos negócios com um processo apoiado por IA — do briefing à publicação — e uma revisão humana antes de qualquer site ir ao ar.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">Pedir orçamento</a>
         <a href="#pacotes" class="btn btn-ghost">Ver pacotes e preços</a>
       </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-cards">
-        <div class="float-card a">briefing.enviado ✓</div>
-        <div class="float-card b">ssl · domínio · hosting</div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>3-5</b><span>dias até publicar</span></div>
+        <div class="hero-stat"><b>3</b><span>mercados atendidos</span></div>
+        <div class="hero-stat"><b>100%</b><span>revisão humana</span></div>
       </div>
-      <div class="stamp">
-        <div class="stamp-inner">
-          <b>rápido</b>
-          IA gera o conteúdo,<br>uma pessoa revê tudo<br>antes da entrega
-        </div>
+    </div>
+    <div class="console ticket on-panel-marks">
+      <div class="console-head">
+        <span class="dot"></span>
+        <span class="ticket-num" id="ticketNum">#SW-0427</span>
+        <span class="console-time">a correr</span>
+      </div>
+      <div class="console-body">
+        <div class="console-line done"><span class="chk">✓</span> briefing recebido</div>
+        <div class="console-line done"><span class="chk">✓</span> estrutura gerada · IA</div>
+        <div class="console-line done"><span class="chk">✓</span> textos gerados · IA</div>
+        <div class="console-line active"><span class="chk">›</span> revisão humana<span class="cursor">_</span></div>
+        <div class="console-line pending"><span class="chk">·</span> publicação</div>
+      </div>
+      <div class="console-foot">
+        <span>pipeline.sitowave</span>
+        <span>ssl · domínio · hosting incl.</span>
       </div>
     </div>
   </div>
@@ -556,12 +601,12 @@
 
 <section id="como-funciona" class="raised">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Como funciona</span>
+    <div class="section-head reveal" data-reveal>
+      <span class="eyebrow"><span class="tick">—</span> Como funciona</span>
       <h2>Da ideia ao site, em quatro etapas.</h2>
-      <p>O mesmo processo para qualquer negócio, em Portugal ou no Brasil — o que muda é o idioma e a moeda.</p>
+      <p>O mesmo processo para qualquer negócio, em Portugal, Espanha ou no Brasil — o que muda é o idioma e a moeda.</p>
     </div>
-    <div class="process">
+    <div class="process reveal" data-reveal>
       <div class="step">
         <span class="num">01</span>
         <h3>Briefing</h3>
@@ -588,8 +633,8 @@
 
 <section id="pacotes">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Pacotes</span>
+    <div class="section-head reveal" data-reveal>
+      <span class="eyebrow"><span class="tick">—</span> Pacotes</span>
       <h2>Preço claro, sem letras miúdas.</h2>
       <p>Escolha o mercado para ver os valores. Todos os pacotes incluem domínio, hospedagem e certificado SSL.</p>
     </div>
@@ -599,45 +644,53 @@
       <button type="button" data-market="br" aria-pressed="false">Brasil · R$</button>
     </div>
 
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Essencial</h3>
-        <div class="price-tag"><span class="pt-price">349€</span><span class="br-price" style="display:none">R$697</span> <span>setup</span></div>
-        <div class="price-sub"><span class="pt-price">+ 19€/mês</span><span class="br-price" style="display:none">+ R$69/mês</span></div>
-        <ul>
-          <li>1 página ou até 5 secções</li>
-          <li>Textos gerados por IA + revisão</li>
-          <li>Domínio próprio incluído</li>
-          <li>Hospedagem e SSL</li>
-        </ul>
-        <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Escolher Essencial</a>
+    <div class="pricing-grid reveal" data-reveal>
+      <div class="price-card ticket">
+        <div class="price-card-inner">
+          <div class="price-card-tag"><span>PKG-01</span><span>essencial</span></div>
+          <h3>Essencial</h3>
+          <div class="price-tag"><span class="pt-price">349€</span><span class="br-price" style="display:none">R$697</span> <span>setup</span></div>
+          <div class="price-sub"><span class="pt-price">+ 19€/mês</span><span class="br-price" style="display:none">+ R$69/mês</span></div>
+          <ul>
+            <li>1 página ou até 5 secções</li>
+            <li>Textos gerados por IA + revisão</li>
+            <li>Domínio próprio incluído</li>
+            <li>Hospedagem e SSL</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Escolher Essencial</a>
+        </div>
       </div>
 
-      <div class="price-card featured">
-        <span class="badge-featured">Mais escolhido</span>
-        <h3>Profissional</h3>
-        <div class="price-tag"><span class="pt-price">649€</span><span class="br-price" style="display:none">R$1.397</span> <span>setup</span></div>
-        <div class="price-sub"><span class="pt-price">+ 29€/mês</span><span class="br-price" style="display:none">+ R$119/mês</span></div>
-        <ul>
-          <li>Até 6 páginas</li>
-          <li>Blog e SEO básico</li>
-          <li>Formulário de contacto + WhatsApp</li>
-          <li>Ficha Google Meu Negócio</li>
-        </ul>
-        <a href="#contacto" class="btn btn-primary btn-small" style="justify-content:center">Escolher Profissional</a>
+      <div class="price-card ticket featured">
+        <div class="price-card-inner">
+          <div class="price-card-tag"><span>PKG-02</span><span>mais escolhido</span></div>
+          <h3>Profissional</h3>
+          <div class="price-tag"><span class="pt-price">649€</span><span class="br-price" style="display:none">R$1.397</span> <span>setup</span></div>
+          <div class="price-sub"><span class="pt-price">+ 29€/mês</span><span class="br-price" style="display:none">+ R$119/mês</span></div>
+          <ul>
+            <li>Até 6 páginas</li>
+            <li>Blog e SEO básico</li>
+            <li>Formulário de contacto + WhatsApp</li>
+            <li>Ficha Google Meu Negócio</li>
+          </ul>
+          <a href="#contacto" class="btn btn-primary btn-small" style="justify-content:center">Escolher Profissional</a>
+        </div>
       </div>
 
-      <div class="price-card">
-        <h3>Só assinatura</h3>
-        <div class="price-tag"><span class="pt-price">15€</span><span class="br-price" style="display:none">R$59</span> <span>/mês</span></div>
-        <div class="price-sub">para quem já tem site</div>
-        <ul>
-          <li>Hospedagem e backups</li>
-          <li>Manutenção contínua</li>
-          <li>1 atualização de conteúdo por mês</li>
-          <li>Sem custo de criação</li>
-        </ul>
-        <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Falar sobre assinatura</a>
+      <div class="price-card ticket">
+        <div class="price-card-inner">
+          <div class="price-card-tag"><span>PKG-03</span><span>assinatura</span></div>
+          <h3>Só assinatura</h3>
+          <div class="price-tag"><span class="pt-price">15€</span><span class="br-price" style="display:none">R$59</span> <span>/mês</span></div>
+          <div class="price-sub">para quem já tem site</div>
+          <ul>
+            <li>Hospedagem e backups</li>
+            <li>Manutenção contínua</li>
+            <li>1 atualização de conteúdo por mês</li>
+            <li>Sem custo de criação</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Falar sobre assinatura</a>
+        </div>
       </div>
     </div>
   </div>
@@ -645,41 +698,51 @@
 
 <section id="prova" class="raised">
   <div class="wrap proof-grid">
-    <div class="proof-copy">
-      <span class="eyebrow">Como trabalhamos</span>
+    <div class="proof-copy reveal" data-reveal>
+      <span class="eyebrow"><span class="tick">—</span> Como trabalhamos</span>
       <h2>Já operamos sites com tráfego real — não é só teoria.</h2>
       <p>A Sitowave usa a mesma automação que já publica e mantém sites próprios no ar todos os dias. Não é uma promessa: é a operação que já corre por trás destes projetos.</p>
     </div>
-    <div class="proof-sites">
-      <div class="proof-site">
-        <span class="name">Gazeta Nacional</span>
-        <span class="tag">site de notícias · operação própria</span>
+    <div class="status-board reveal" data-reveal>
+      <div class="status-row">
+        <div>
+          <span class="name">Gazeta Nacional</span><br>
+          <span class="tag">site de notícias · operação própria</span>
+        </div>
+        <span class="status-live"><span class="pulse"></span>no ar</span>
       </div>
-      <div class="proof-site">
-        <span class="name">Ativo Certo</span>
-        <span class="tag">site de conteúdo · operação própria</span>
+      <div class="status-row">
+        <div>
+          <span class="name">Ativo Certo</span><br>
+          <span class="tag">site de conteúdo · operação própria</span>
+        </div>
+        <span class="status-live"><span class="pulse"></span>no ar</span>
       </div>
-      <div class="proof-placeholder">
-        os primeiros sites de clientes Sitowave vão aparecer aqui
+      <div class="status-row pending">
+        <div>
+          <span class="name">Próximo cliente</span><br>
+          <span class="tag">reservado para o primeiro site Sitowave</span>
+        </div>
+        <span class="status-live"><span class="pulse"></span>em breve</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contacto" class="on-ink">
+<section id="contacto" class="on-panel">
   <div class="wrap contact-grid">
-    <div class="contact-copy">
-      <span class="eyebrow">Contacto</span>
+    <div class="contact-copy reveal" data-reveal>
+      <span class="eyebrow"><span class="tick">—</span> Contacto</span>
       <h2>Vamos pôr o seu negócio online.</h2>
       <p>Preencha os dados abaixo e entramos em contacto para perceber o que precisa e sugerir o pacote certo.</p>
       <div class="contact-meta">
-        WHATSAPP — [a confirmar]<br>
-        EMAIL — [a confirmar]<br>
-        ALGARVE, PORTUGAL
+        <span class="k">WHATSAPP</span> — <span class="pending">a confirmar</span><br>
+        <span class="k">EMAIL</span> — <span class="pending">a confirmar</span><br>
+        <span class="k">BASE</span> — Algarve, Portugal
       </div>
     </div>
 
-    <div>
+    <div class="reveal" data-reveal>
       <form class="brief" id="briefForm">
         <div class="field"><label for="f-nome">Nome</label><input id="f-nome" type="text" placeholder="O seu nome" required></div>
         <div class="field"><label for="f-negocio">Negócio</label><input id="f-negocio" type="text" placeholder="Nome do negócio" required></div>
@@ -688,6 +751,7 @@
         <div class="field"><label for="f-mercado">Mercado</label>
           <select id="f-mercado">
             <option>Portugal</option>
+            <option>Espanha</option>
             <option>Brasil</option>
           </select>
         </div>
@@ -715,14 +779,17 @@
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
-    <span>Sitowave — Portugal &amp; Brasil</span>
-    <span>rascunho interno · 2026</span>
+  <div class="wrap">
+    <span><strong>SITOWAVE</strong> — Portugal · Espanha · Brasil</span>
+    <span>build 2026.08 · pré-lançamento</span>
   </div>
 </footer>
 
 <script>
   (function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* market toggle */
     var buttons = document.querySelectorAll('.market-toggle button');
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -734,6 +801,7 @@
       });
     });
 
+    /* contact form mockup */
     var form = document.getElementById('briefForm');
     var success = document.getElementById('successPanel');
     form.addEventListener('submit', function (e) {
@@ -741,6 +809,48 @@
       form.style.display = 'none';
       success.classList.add('show');
     });
+
+    /* hero build console — cycles the pipeline stages */
+    if (!reduceMotion) {
+      var lines = document.querySelectorAll('.console-line');
+      var ticketEl = document.getElementById('ticketNum');
+      var ticketNum = 427;
+      var stage = 3;
+      function renderConsole() {
+        lines.forEach(function (line, i) {
+          line.classList.remove('done', 'active', 'pending');
+          var chk = line.querySelector('.chk');
+          if (i < stage) { line.classList.add('done'); if (chk) chk.textContent = '✓'; }
+          else if (i === stage) { line.classList.add('active'); if (chk) chk.textContent = '›'; }
+          else { line.classList.add('pending'); if (chk) chk.textContent = '·'; }
+        });
+      }
+      setInterval(function () {
+        stage++;
+        if (stage >= lines.length) {
+          stage = 0;
+          ticketNum++;
+          if (ticketEl) ticketEl.textContent = '#SW-' + ticketNum;
+        }
+        renderConsole();
+      }, 1900);
+    }
+
+    /* scroll reveal — progressive: elements are fully visible without JS */
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var revealEls = document.querySelectorAll('[data-reveal]');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.remove('reveal'); });
+    }
   })();
 </script>
 
