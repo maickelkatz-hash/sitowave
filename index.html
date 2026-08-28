@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sitowave — sites profissionais para pequenas e médias empresas em Portugal, Espanha e Brasil, prontos em poucos dias com apoio de IA e revisão humana.">
+<title>Sitowave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,680;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --canvas: #f3f4ee;
+    --canvas-raised: #fbfbf8;
+    --ink: #15181f;
+    --ink-soft: #363c47;
+    --brand: #2c4bd4;
+    --brand-ink: #1c34a3;
+    --flame: #dd6a17;
+    --flame-ink: #b6540f;
+    --mist: #878d97;
+    --line: rgba(21, 24, 31, 0.12);
+    --line-strong: rgba(21, 24, 31, 0.22);
+    --on-ink: #f3f4ee;
+    --on-ink-soft: #b7bac2;
+    --shadow: 0 1px 2px rgba(21,24,31,0.06);
+
+    --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+    --font-body: 'Work Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Space Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas: #14161c;
+      --canvas-raised: #1b1e26;
+      --ink: #f0f1ec;
+      --ink-soft: #c7cad3;
+      --brand: #6c86f5;
+      --brand-ink: #97a8f8;
+      --flame: #f2934c;
+      --flame-ink: #f7ad74;
+      --mist: #8c93a1;
+      --line: rgba(240, 241, 236, 0.14);
+      --line-strong: rgba(240, 241, 236, 0.26);
+      --on-ink: #14161c;
+      --on-ink-soft: #14161c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas: #14161c;
+    --canvas-raised: #1b1e26;
+    --ink: #f0f1ec;
+    --ink-soft: #c7cad3;
+    --brand: #6c86f5;
+    --brand-ink: #97a8f8;
+    --flame: #f2934c;
+    --flame-ink: #f7ad74;
+    --mist: #8c93a1;
+    --line: rgba(240, 241, 236, 0.14);
+    --line-strong: rgba(240, 241, 236, 0.26);
+    --on-ink: #14161c;
+    --on-ink-soft: #14161c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { max-width: 100%; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  em { font-style: italic; color: var(--flame-ink); }
+
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 16px;
+    height: 1px;
+    background: var(--brand);
+  }
+
+  /* ---------- draft ribbon ---------- */
+  .draft-ribbon {
+    background: var(--ink);
+    color: var(--on-ink-soft);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 8px 16px;
+  }
+  .draft-ribbon strong { color: var(--on-ink); font-weight: 700; }
+
+  /* ---------- nav ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--canvas) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 680;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .logo .dot { color: var(--flame); }
+  nav.links { display: flex; gap: 32px; }
+  nav.links a {
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    position: relative;
+    padding: 4px 0;
+  }
+  nav.links a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1.5px;
+    background: var(--flame);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s ease;
+  }
+  nav.links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  nav.links a:hover { color: var(--ink); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 11px 20px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--flame); color: #fff8f0; }
+  .btn-primary:hover { background: var(--flame-ink); box-shadow: var(--shadow); }
+  .btn-ghost { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn-small { padding: 8px 14px; font-size: 13px; }
+  @media (max-width: 720px) { nav.links { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  .hero h1 {
+    font-size: clamp(38px, 5.2vw, 60px);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    margin-top: 18px;
+  }
+  .hero p.lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-top: 22px;
+  }
+  .hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stamp {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 42s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .stamp-inner {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--on-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    animation: counterspin 42s linear infinite;
+    box-shadow: var(--shadow);
+  }
+  @keyframes counterspin { to { transform: rotate(-360deg); } }
+  .stamp-inner b { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 6px; color: var(--flame); font-style: italic;}
+
+  .hero-cards {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .float-card {
+    position: absolute;
+    background: var(--canvas-raised);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 13px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+  }
+  .float-card.a { top: 6%; left: -4%; }
+  .float-card.b { bottom: 10%; right: -6%; }
+  @media (max-width: 860px) { .float-card { display: none; } }
+
+  /* ---------- sections ---------- */
+  section { padding: 92px 0; }
+  section.on-ink { background: var(--ink); color: var(--on-ink); }
+  section.on-ink .eyebrow { color: var(--flame-ink); }
+  section.on-ink .eyebrow::before { background: var(--flame-ink); }
+  section.raised { background: var(--canvas-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(28px, 3.4vw, 38px); margin-top: 14px; letter-spacing: -0.01em; }
+  .section-head p { color: var(--ink-soft); margin-top: 14px; font-size: 16.5px; }
+  section.on-ink .section-head p { color: var(--on-ink-soft); }
+
+  /* ---------- process ---------- */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 860px) { .process { grid-template-columns: 1fr; } }
+  .step {
+    padding: 28px 26px 32px 0;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .process > .step:last-child { border-right: none; }
+  @media (max-width: 860px) {
+    .step { border-right: none; border-bottom: 1px solid var(--line); padding: 26px 0; }
+  }
+  .step .num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--flame);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .step h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+
+  /* ---------- pricing ---------- */
+  .market-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .market-toggle button {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    padding: 9px 16px;
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .market-toggle button + button { border-left: 1px solid var(--line-strong); }
+  .market-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .price-card {
+    background: var(--canvas-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(21,24,31,0.08); border-color: var(--line-strong); }
+  .price-card.featured { border-color: var(--flame); border-width: 1.5px; }
+  .badge-featured {
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background: var(--flame);
+    color: #fff8f0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+  .price-card h3 { font-size: 20px; font-weight: 600; }
+  .price-tag {
+    font-family: var(--font-mono);
+    font-size: 34px;
+    font-weight: 700;
+    margin: 18px 0 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .price-tag span { font-size: 14px; font-weight: 400; color: var(--mist); }
+  .price-sub { font-family: var(--font-mono); font-size: 13px; color: var(--mist); margin-bottom: 22px; }
+  .price-card ul { list-style: none; padding: 0; margin: 0 0 28px; flex-grow: 1; }
+  .price-card li {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 10px;
+  }
+  .price-card li:first-child { border-top: none; }
+  .price-card li::before { content: "—"; color: var(--flame); flex-shrink: 0; }
+
+  /* ---------- proof ---------- */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .proof-grid { grid-template-columns: 1fr; } }
+  .proof-copy p { color: var(--ink-soft); font-size: 16.5px; margin-top: 18px; max-width: 52ch; }
+  .proof-sites { display: flex; flex-direction: column; gap: 14px; }
+  .proof-site {
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 18px 20px;
+    background: var(--canvas-raised);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .proof-site .name { font-family: var(--font-display); font-weight: 600; font-size: 17px; }
+  .proof-site .tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--mist); letter-spacing: 0.03em; }
+  .proof-placeholder {
+    border: 1px dashed var(--line-strong);
+    border-radius: 5px;
+    padding: 18px 20px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--mist);
+    text-align: center;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 64px;
+  }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-copy h2 { font-size: clamp(28px, 3.4vw, 40px); }
+  .contact-copy p { color: var(--on-ink-soft); margin-top: 16px; max-width: 42ch; }
+  .contact-meta { margin-top: 34px; font-family: var(--font-mono); font-size: 13px; color: var(--on-ink-soft); line-height: 2; }
+
+  form.brief {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  form.brief .full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { form.brief { grid-template-columns: 1fr; } }
+
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-ink-soft);
+    margin-bottom: 8px;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: color-mix(in srgb, var(--on-ink) 6%, transparent);
+    border: 1px solid rgba(240,241,236,0.22);
+    color: var(--on-ink);
+    border-radius: 3px;
+    padding: 11px 12px;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+  }
+  :root[data-theme="dark"] .field input,
+  :root[data-theme="dark"] .field select,
+  :root[data-theme="dark"] .field textarea { background: color-mix(in srgb, var(--ink) 40%, transparent); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .field input,
+    :root:not([data-theme="light"]) .field select,
+    :root:not([data-theme="light"]) .field textarea { background: color-mix(in srgb, var(--ink) 40%, transparent); }
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(240,241,236,0.4); }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 2px solid var(--flame);
+    outline-offset: 1px;
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+
+  form.brief .submit-row { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+  .form-note { font-family: var(--font-mono); font-size: 11.5px; color: var(--on-ink-soft); margin-top: 14px; }
+
+  .success-panel {
+    border: 1px solid rgba(240,241,236,0.25);
+    border-radius: 5px;
+    padding: 28px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    display: none;
+  }
+  .success-panel.show { display: block; }
+  .success-panel b { display: block; font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--flame-ink); margin-bottom: 8px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 28px 0;
+    border-top: 1px solid rgba(240,241,236,0.14);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--on-ink-soft);
+  }
+
+  ::selection { background: var(--flame); color: #fff8f0; }
+</style>
+</head>
+<body>
+<div class="draft-ribbon">
+  <strong>RASCUNHO</strong> — protótipo interno da agência, ainda não publicado · formulário abaixo é uma pré-visualização (não envia dados reais)
+</div>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <div class="logo">Sitowave<span class="dot">.</span></div>
+    <nav class="links">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#pacotes">Pacotes</a>
+      <a href="#prova">Como trabalhamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn btn-primary btn-small">Pedir orçamento</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Agência de sites · Portugal &amp; Brasil</span>
+      <h1>Site profissional pronto em poucos dias, não em meses.</h1>
+      <p class="lede">Criamos sites institucionais para pequenos negócios com um processo apoiado por IA — do briefing à publicação — e uma revisão humana antes de qualquer site ir ao ar.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Pedir orçamento</a>
+        <a href="#pacotes" class="btn btn-ghost">Ver pacotes e preços</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-cards">
+        <div class="float-card a">briefing.enviado ✓</div>
+        <div class="float-card b">ssl · domínio · hosting</div>
+      </div>
+      <div class="stamp">
+        <div class="stamp-inner">
+          <b>rápido</b>
+          IA gera o conteúdo,<br>uma pessoa revê tudo<br>antes da entrega
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" class="raised">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Da ideia ao site, em quatro etapas.</h2>
+      <p>O mesmo processo para qualquer negócio, em Portugal ou no Brasil — o que muda é o idioma e a moeda.</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Briefing</h3>
+        <p>Preenche um formulário curto sobre o negócio: o que faz, onde fica, que imagem quer passar.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Geração por IA</h3>
+        <p>A nossa automação escreve os textos e monta a estrutura do site — página inicial, sobre, serviços, contacto.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Revisão humana</h3>
+        <p>Alguém revê cada site antes da entrega: imagens, textos, contactos. Nunca entregamos sem esta etapa.</p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h3>No ar</h3>
+        <p>O site fica publicado com domínio próprio, hospedagem e SSL incluídos no pacote escolhido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pacotes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pacotes</span>
+      <h2>Preço claro, sem letras miúdas.</h2>
+      <p>Escolha o mercado para ver os valores. Todos os pacotes incluem domínio, hospedagem e certificado SSL.</p>
+    </div>
+
+    <div class="market-toggle" role="group" aria-label="Selecionar mercado">
+      <button type="button" data-market="pt" aria-pressed="true">Portugal · €</button>
+      <button type="button" data-market="br" aria-pressed="false">Brasil · R$</button>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Essencial</h3>
+        <div class="price-tag"><span class="pt-price">349€</span><span class="br-price" style="display:none">R$697</span> <span>setup</span></div>
+        <div class="price-sub"><span class="pt-price">+ 19€/mês</span><span class="br-price" style="display:none">+ R$69/mês</span></div>
+        <ul>
+          <li>1 página ou até 5 secções</li>
+          <li>Textos gerados por IA + revisão</li>
+          <li>Domínio próprio incluído</li>
+          <li>Hospedagem e SSL</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Escolher Essencial</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="badge-featured">Mais escolhido</span>
+        <h3>Profissional</h3>
+        <div class="price-tag"><span class="pt-price">649€</span><span class="br-price" style="display:none">R$1.397</span> <span>setup</span></div>
+        <div class="price-sub"><span class="pt-price">+ 29€/mês</span><span class="br-price" style="display:none">+ R$119/mês</span></div>
+        <ul>
+          <li>Até 6 páginas</li>
+          <li>Blog e SEO básico</li>
+          <li>Formulário de contacto + WhatsApp</li>
+          <li>Ficha Google Meu Negócio</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary btn-small" style="justify-content:center">Escolher Profissional</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Só assinatura</h3>
+        <div class="price-tag"><span class="pt-price">15€</span><span class="br-price" style="display:none">R$59</span> <span>/mês</span></div>
+        <div class="price-sub">para quem já tem site</div>
+        <ul>
+          <li>Hospedagem e backups</li>
+          <li>Manutenção contínua</li>
+          <li>1 atualização de conteúdo por mês</li>
+          <li>Sem custo de criação</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ghost btn-small" style="justify-content:center">Falar sobre assinatura</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prova" class="raised">
+  <div class="wrap proof-grid">
+    <div class="proof-copy">
+      <span class="eyebrow">Como trabalhamos</span>
+      <h2>Já operamos sites com tráfego real — não é só teoria.</h2>
+      <p>A Sitowave usa a mesma automação que já publica e mantém sites próprios no ar todos os dias. Não é uma promessa: é a operação que já corre por trás destes projetos.</p>
+    </div>
+    <div class="proof-sites">
+      <div class="proof-site">
+        <span class="name">Gazeta Nacional</span>
+        <span class="tag">site de notícias · operação própria</span>
+      </div>
+      <div class="proof-site">
+        <span class="name">Ativo Certo</span>
+        <span class="tag">site de conteúdo · operação própria</span>
+      </div>
+      <div class="proof-placeholder">
+        os primeiros sites de clientes Sitowave vão aparecer aqui
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="on-ink">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <span class="eyebrow">Contacto</span>
+      <h2>Vamos pôr o seu negócio online.</h2>
+      <p>Preencha os dados abaixo e entramos em contacto para perceber o que precisa e sugerir o pacote certo.</p>
+      <div class="contact-meta">
+        WHATSAPP — [a confirmar]<br>
+        EMAIL — [a confirmar]<br>
+        ALGARVE, PORTUGAL
+      </div>
+    </div>
+
+    <div>
+      <form class="brief" id="briefForm">
+        <div class="field"><label for="f-nome">Nome</label><input id="f-nome" type="text" placeholder="O seu nome" required></div>
+        <div class="field"><label for="f-negocio">Negócio</label><input id="f-negocio" type="text" placeholder="Nome do negócio" required></div>
+        <div class="field"><label for="f-whats">WhatsApp</label><input id="f-whats" type="tel" placeholder="+351 9XX XXX XXX"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="voce@email.com" required></div>
+        <div class="field"><label for="f-mercado">Mercado</label>
+          <select id="f-mercado">
+            <option>Portugal</option>
+            <option>Brasil</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-pacote">Pacote de interesse</label>
+          <select id="f-pacote">
+            <option>Essencial</option>
+            <option>Profissional</option>
+            <option>Só assinatura</option>
+            <option>Ainda não sei</option>
+          </select>
+        </div>
+        <div class="field full"><label for="f-msg">Mensagem</label><textarea id="f-msg" placeholder="Conte-nos um pouco sobre o seu negócio"></textarea></div>
+        <div class="full submit-row">
+          <button type="submit" class="btn btn-primary">Pedir orçamento</button>
+        </div>
+        <p class="form-note full">Pré-visualização do site — este formulário ainda não está ligado à automação de captação de leads.</p>
+      </form>
+
+      <div class="success-panel" id="successPanel">
+        <b>Obrigado!</b>
+        Recebemos os seus dados. Assim que o site estiver publicado, este formulário passa a enviar diretamente para a nossa automação de resposta — e a receber uma resposta personalizada em minutos.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+    <span>Sitowave — Portugal &amp; Brasil</span>
+    <span>rascunho interno · 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.market-toggle button');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        var market = btn.getAttribute('data-market');
+        document.querySelectorAll('.pt-price').forEach(function (el) { el.style.display = market === 'pt' ? '' : 'none'; });
+        document.querySelectorAll('.br-price').forEach(function (el) { el.style.display = market === 'br' ? '' : 'none'; });
+      });
+    });
+
+    var form = document.getElementById('briefForm');
+    var success = document.getElementById('successPanel');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  })();
+</script>
+
+</body>
+</html>
